@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Roboto|Roboto+Mono|Roboto+Slab');
+
+
+html, body {
+    color: #050709;
+    height: 100%;
+}
+
+    body {
+        background: no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    html {
+        font-size: 1rem;
+    }
+      
+    @include media-breakpoint-up(sm) {
+    html {
+        font-size: 1.2rem;
+        }
+    }
+      
+    @include media-breakpoint-up(md) {
+    html {
+        font-size: 1.4rem;
+        }
+    }
+      
+    @include media-breakpoint-up(lg) {
+    html {
+        font-size: 1.6rem;
+        }
+    }
+
+
+.pinnevent-brand {
+    font-family: 'Pacifico', cursive;
+    color: #22B39B;
+}
+
+    h1.pinnevent-brand {
+        font-size: 3.846rem;
+    }
+
+
+
+/* text */
+.text-size-inc {
+    font-size: 1.2rem;
+}
+
+.roboto-text {
+    font-family: 'Roboto', sans-serif;
+}
+
+.force-text-white {
+    color: white;
+}
+
+
+
+
+
+
+/* anchors */
+
+a {
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+
+
+
+
+/* ERROR FEEDBACK */
+.invalid-feedback {
+    display: inherit;
+} 
