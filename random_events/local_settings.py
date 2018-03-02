@@ -1,4 +1,5 @@
 import os
+from random_events import settings
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DATABASES = {
@@ -9,3 +10,5 @@ DATABASES = {
 }
 
 DEBUG = True
+ALLOWED_HOSTS = []
+STATICFILES_DIRS = [STATIC_DIR]
