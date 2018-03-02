@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Pinnevent: Thank You{% endblock%}
+
+{% block content %}
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center">
+            <div class="col-sm-6 text-center my-auto">
+                <a href="{% url 'index' %}"><h1 class="pinnevent-brand">Pinnevent</h1></a>
+                <p>{{ thank_you_for }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Sign-up{% endblock %}
+
+{% block javascript %}
+    <script>
+        $(function () {
+            $('#id_email').focus();
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+{% load widget_tweaks %}
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 my-auto">
+                <a href="{% url 'index' %}"><h4 class="pinnevent-brand text-center">Pinnevent</h4></a>
+                <br><h5 class="pinn-sub-header mb-0 roboto-text text-center">Curabitur sed nulla et nisl rhoncus commodo feugiat in nunc.</h5>
+
+                <br>
+                
+                <div class="form-box">
+                    <form method="POST" novalidate>
+                        {% csrf_token %}
+                        {% for form in forms %}
+                            <div class="form-group">
+                                <!--<label class="col-form-label-sm mb-0">{{ form.label_tag  }}</label> -->
+
+                                {% if forms.is_bound %}
+                                    {% if form.errors %}
+                                        {% render_field form class="form-control form-control-sm" %}
+                                        {% for error in form.errors %}
+                                            <div class="invalid-feedback">{{ error }}</div>
+                                        {% endfor %}
+                                    {% elif forms.non_field_errors and form.name == 'password' %}
+                                        {% render_field form class="form-control form-control-sm" %}
+                                        {% for error in forms.non_field_errors %}
+                                            <div class="invalid-feedback">{{ error }}</div>
+                                        {% endfor %}
+                                    
+                                    {% else %}
+                                        {% render_field form class="form-control form-control-sm" %}
+                                    {% endif %}
+
+                                {% else %}
+                                    {% render_field form class="form-control form-control-sm" %} 
+                                {% endif %}
+
+                                {% if form.help_text %}
+                                    <small class="form-text text-muted">
+                                        {{ form.help_text }}
+                                    </small>
+                                {% endif %}
+                                
+
+                            </div>
+                        {% endfor %}
+
+                        <div class="form-check">
+                            <input name="tosCheckBox" type="checkbox" class="form-check-input form-control-sm" id="tosCheckBox1">
+                            <label class="form-check-label col-form-label-sm pt-0" for="tosCheckBox1">
+                                I having fun here, please remember me here.
+                            </label>
+                        </div>
+                        <button class="btn btn-success btn-sm mt-3" type="submit">Signin</button>
+                    </form>
+
+                    <br>
+                    <p class=""><small>If you don't have an account you can <a class="" href="{% url 'accounts:signup' %}">signup here</a>.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

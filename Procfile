@@ -1,0 +1,1 @@
+web: gunicorn random_events.wsgi --log-file -
