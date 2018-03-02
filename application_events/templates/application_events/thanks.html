@@ -1,4 +1,15 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheet %}
+    {% if celebrate %}
+        <style type="text/css">
+            body { background-image: url({% with 'images/confetti.png' as image_static %}{% static image_static %}{% endwith %}); }
+        </style>
+    {% endif %}
+{% endblock %}
+
+
 
 {% block title %}Pinnevent: Thank You{% endblock%}
 

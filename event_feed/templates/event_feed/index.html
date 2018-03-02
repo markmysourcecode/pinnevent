@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheet %}
+    {% if celebrate %}
+        <style type="text/css">
+            body { background-image: url({% with 'images/confetti.png' as image_static %}{% static image_static %}{% endwith %}); }
+        </style>
+    {% endif %}
+{% endblock %}
+
+{% block title %}Pinnevent{% endblock%}
+
+{% block content %}
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center">
+            <div class="col-sm-6 text-center my-auto">
+                <h1 class="pinnevent-brand">Pinnevent</h1>
+                {% if user.is_authenticated %}
+                    <p>Cras adipiscing enim eu turpis. Ut eu sem integer vitae justo eget magna fermentum. <a class="" href="">Interest and Profile</a>. Dolor morbi non arcu risus quis varius quam quisque. <a class="" href="{% url 'accounts:signout' %}">Logout</a></p>
+                {% else %}
+                    <p>In dictum non consectetur a erat nam <a class="" href="{% url 'accounts:signin' %}">Sigin here</a>. Dolor morbi non arcu risus quis varius quam quisque <a class="" href="{% url 'accounts:signup' %}">Signup here</a>.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

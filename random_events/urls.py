@@ -18,9 +18,10 @@ from django.urls import path, include
 
 from application_events import views as aev
 from paperless_mails import views as pmv
+from event_feed import views as efv
 
 urlpatterns = [
-    path('', pmv.Index_With_Email_Subscription, name="index"),
+    path('', efv.Index, name="index"),
     path('humongousdata/', admin.site.urls),
     path('accounts/',include('accounts.urls')),
     path('termsofservices/', aev.TermsOfServicesView, name="termsofservices"),
