@@ -4,5 +4,3 @@ __pycache__
 db.sqlite3
 /static
 random_events/local_settings.py
-random_events/removeme.py
-removeme.txt
