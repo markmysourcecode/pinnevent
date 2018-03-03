@@ -19,6 +19,7 @@ import django_heroku
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -28,9 +29,10 @@ SECRET_KEY = 'j0=a32*mdo4ha538=_6o+l5m%xtgcdffyn)m3a2my&@9e3cd+p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['*', '127.0.0.1', '.herokuapp.com']
 
 # Application definition
 
@@ -91,13 +93,16 @@ WSGI_APPLICATION = 'random_events.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+DATABASES  =  { 
+    'default' :  { 
+        'ENGINE' :  'django.db.backends.postgresql_psycopg2' , 
+        'NAME' :  '' , 
+        'USER' :  '' , 
+        'PASSWORD' :  '' , 
+        'HOST' :  '' , 
+        'PORT' :  '' , 
+    } 
 }
-
 # https://www.fomfus.com/articles/how-to-use-email-as-username-for-django-authentication-removing-the-username
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -172,7 +177,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATICFILES_DIRS = [STATIC_DIR]
+STATICFILES_DIRS = []
+'''STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)'''
 
 
 
@@ -186,4 +196,57 @@ STATIC_URL = '/static/'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
-#local_settings()
+
+
+
+'''# A sample logging configuration. The only tangible logging
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error when DEBUG=False.
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}'''
+
+
+
+
+
+
+
+# local_settings()
+print('working with local_settings')
+try:
+    from local_settings import *
+except ImportError:
+    try:
+        from mod_python import apache
+        apache.log_error('local_settings.py not set; using default settings', apache.APLOG_NOTICE)
+    except ImportError:
+        import sys
+        sys.stderr.write('local_settings.py not set; using default settings\n')
+
+
+print(STATICFILES_DIRS)
+print(DEBUG)
+

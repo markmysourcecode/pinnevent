@@ -1,14 +1,18 @@
 import os
-from random_events import settings
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+from settings import SITE_ROOT
+#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+print(SITE_ROOT)
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(SITE_ROOT, 'db.sqlite3'),
     }
 }
 
 DEBUG = True
-ALLOWED_HOSTS = []
-STATICFILES_DIRS = [STATIC_DIR]
+TEMPLATE_DEBUG = DEBUG
+STATICFILES_DIRS = os.path.join(SITE_ROOT, 'static')
+
+print('local settings')
