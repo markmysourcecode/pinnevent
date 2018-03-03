@@ -9,7 +9,7 @@ from settings import SITE_ROOT, STATIC_DIR
     }
 }'''
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 #ALLOWED_HOSTS = []
 #STATICFILES_DIRS = [STATIC_DIR]
