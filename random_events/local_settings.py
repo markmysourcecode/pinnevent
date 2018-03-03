@@ -11,7 +11,7 @@ DATABASES = {
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 STATICFILES_DIRS = [STATIC_DIR]
 
 print('local settings is set')
