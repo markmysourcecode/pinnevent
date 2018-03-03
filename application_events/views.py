@@ -14,9 +14,11 @@ def ThankYouView(request, **kwargs):
     # msg list
     thank_you_for_dict = {
             'registered': 'some message here for complete registration.',
-            'subscribed': 'some message here for complete subscription.',
+            'subscribed': 'Thanks for subscribing! You\'ll be receiving our invitation soon. We are excited to meet you in the party!',
             'welcome-first': 'some message here for authenticated login.',
             'pinningwithus': 'some message here after using pinnevent.',
+
+            'subscribed_failed': 'Ooops, there\'s something wrong with how the mail was sent. Don\'t worry it is not you, it is us.',
             'not_sure': 'Ooops, there\'s something wrong with this page. Don\'t worry it is not you, it is us.',
         }
 
