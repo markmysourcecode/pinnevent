@@ -1,8 +1,7 @@
 *.pyc
 *~
 __pycache__
-virtualspace
 db.sqlite3
 /static
-.DS_Store
 random_events/local_settings.py
+removeme.txt
