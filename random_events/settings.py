@@ -207,7 +207,6 @@ STATICFILES_DIRS = []
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
-<<<<<<< HEAD
 
 
 
@@ -257,5 +256,5 @@ except ImportError:
         import sys
         sys.stderr.write('local_settings.py not set; using default settings\n')
 
-=======
->>>>>>> 4d10741d813c729c633557538049f32ca8bd3db3
+
+DISABLE_COLLECTSTATIC = 1
