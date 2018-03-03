@@ -12,7 +12,13 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import django_heroku
+import sys
 #from random_events import local_settings
+
+
+file_dir = os.path.dirname(__file__)
+sys.path.append(file_dir)
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -32,7 +38,7 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['*', '127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['.herokuapp.com']
 
 # Application definition
 
@@ -235,7 +241,6 @@ LOGGING = {
 
 
 # local_settings()
-print('working with local_settings')
 try:
     from local_settings import *
 except ImportError:
@@ -245,8 +250,4 @@ except ImportError:
     except ImportError:
         import sys
         sys.stderr.write('local_settings.py not set; using default settings\n')
-
-
-print(STATICFILES_DIRS)
-print(DEBUG)
 

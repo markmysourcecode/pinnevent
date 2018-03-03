@@ -1,8 +1,6 @@
 import os
-from settings import SITE_ROOT
+from settings import SITE_ROOT, STATIC_DIR
 #BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-print(SITE_ROOT)
 
 DATABASES = {
     'default': {
@@ -13,6 +11,7 @@ DATABASES = {
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-STATICFILES_DIRS = os.path.join(SITE_ROOT, 'static')
+ALLOWED_HOSTS = []
+STATICFILES_DIRS = [STATIC_DIR]
 
-print('local settings')
+print('local settings is set')
