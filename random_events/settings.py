@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import django_heroku
 import sys
+import dj_database_url
 #from random_events import local_settings
 
 
@@ -104,16 +105,12 @@ WSGI_APPLICATION = 'random_events.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES  =  { 
-    'default' :  { 
-        'ENGINE' :  'django.db.backends.postgresql_psycopg2' , 
-        'NAME' :  '' , 
-        'USER' :  '' , 
-        'PASSWORD' :  '' , 
-        'HOST' :  '' , 
-        'PORT' :  '' , 
-    } 
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
+    )
 }
+
 # https://www.fomfus.com/articles/how-to-use-email-as-username-for-django-authentication-removing-the-username
 AUTH_USER_MODEL = 'accounts.User'
 
