@@ -255,5 +255,6 @@ except ImportError:
         sys.stderr.write('local_settings.py not set; using default settings\n')
 
 
+print(DEBUG)
 
 #DISABLE_COLLECTSTATIC = 1
