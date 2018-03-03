@@ -188,7 +188,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = []
+#STATICFILES_DIRS = []
 '''STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -257,4 +257,5 @@ except ImportError:
         sys.stderr.write('local_settings.py not set; using default settings\n')
 
 
-DISABLE_COLLECTSTATIC = 1
+
+#DISABLE_COLLECTSTATIC = 1
