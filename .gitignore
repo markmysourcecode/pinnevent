@@ -5,4 +5,4 @@ virtualspace
 db.sqlite3
 /static
 .DS_Store
-cat random_events/local_settings.py
+random_events/local_settings.py
