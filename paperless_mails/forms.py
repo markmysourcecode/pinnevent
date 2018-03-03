@@ -20,7 +20,7 @@ class EmailSubscriberForm(forms.ModelForm):
             attrs={
                 #'class': 'form-control form-control-sm',
                 #'aria-describedby': 'password1Help',
-                'placeholder': 'some email address',
+                'placeholder': 'your email address',
             }),
         error_messages={
             'required': 'let\'s have your email address so we can reserve you the party!',
