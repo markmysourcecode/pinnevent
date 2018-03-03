@@ -35,7 +35,12 @@ SECRET_KEY = 'j0=a32*mdo4ha538=_6o+l5m%xtgcdffyn)m3a2my&@9e3cd+p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+<<<<<<< HEAD
 TEMPLATE_DEBUG = DEBUG
+=======
+
+ALLOWED_HOSTS = ['*']
+>>>>>>> 4d10741d813c729c633557538049f32ca8bd3db3
 
 #ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['.herokuapp.com']
@@ -202,6 +207,7 @@ STATICFILES_DIRS = []
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+<<<<<<< HEAD
 
 
 
@@ -251,3 +257,5 @@ except ImportError:
         import sys
         sys.stderr.write('local_settings.py not set; using default settings\n')
 
+=======
+>>>>>>> 4d10741d813c729c633557538049f32ca8bd3db3
