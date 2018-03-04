@@ -30,9 +30,8 @@ def ThankYouView(request, **kwargs):
         celebrate = True
     except KeyError:
         thank_you_for = thank_you_for_dict['not_sure']
-
-    print(thank_you_for)
     
+    print(kwargs['thanks_for'])
     return render(request, 'application_events/thanks.html', {'thank_you_for': thank_you_for, 'celebrate': celebrate })
 
 

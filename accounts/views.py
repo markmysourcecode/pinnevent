@@ -61,13 +61,13 @@ def signin(request):
                 # authenticate then login
                 user = authenticate(email=email, password=password)
                 if user is not None:
-                    print('authenticated')
+                    #print('authenticated')
 
                     if user.is_active:
                         login(request, user)
                         return redirect('/') 
                 else:
-                    print('who\'s this user')
+                    #print('who\'s this user')
                     return render(request, 'accounts/login.html', { 'forms': form, 'unregistereduser': True })
 
                 #return redirect('application_events:thanksfor', thanks_for = 'welcome-first')

@@ -27,6 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+APPLICATION_EVENTS_DIR = os.path.join(BASE_DIR, 'application_events')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -239,22 +240,19 @@ LOGGING = {
 
 
 
-
-
-
-
 # local_settings()
 try:
     from local_settings import *
 except ImportError:
-    try:
+    pass
+    '''try:
         from mod_python import apache
         apache.log_error('local_settings.py not set; using default settings', apache.APLOG_NOTICE)
     except ImportError:
         import sys
-        sys.stderr.write('local_settings.py not set; using default settings\n')
+        sys.stderr.write('local_settings.py not set; using default settings\n')'''
+
 
 
 print(DEBUG)
-
 #DISABLE_COLLECTSTATIC = 1
