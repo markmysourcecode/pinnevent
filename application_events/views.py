@@ -24,6 +24,7 @@ def ThankYouView(request, **kwargs):
 
     celebrate = False
 
+
     # validate thank you for message
     try:
         thank_you_for = thank_you_for_dict[kwargs['thanks_for']]
@@ -31,7 +32,21 @@ def ThankYouView(request, **kwargs):
     except KeyError:
         thank_you_for = thank_you_for_dict['not_sure']
     
-    print(kwargs['thanks_for'])
     return render(request, 'application_events/thanks.html', {'thank_you_for': thank_you_for, 'celebrate': celebrate })
+
+
+
+
+
+# url errors
+#
+
+def error_404(request):
+    return render(request, 'application_events/404.html')
+
+
+
+def error_500(request):
+    return render(request, 'application_events/500.html')
 
 

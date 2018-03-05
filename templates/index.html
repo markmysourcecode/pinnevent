@@ -25,8 +25,6 @@
                 <h3 class="text-white roboto-text">provides a better place for event organizers, joiners and storytellers to bring the experience that matter.</h4>
 
                 <br><br>
-                <!-- disable signup -- >
-                <!-- <p  class="force-text-white">At vero eos et accusamus et iusto odio dignissimos ducimus or you may also <a class="force-text-white" href="{% url 'accounts:signup' %}"><strong>pre-signup here</strong></a>.</p> -->
                 <p  class="force-text-white">we're still working with our first party but if you're interested, we can inform you once it is ready.</p>
 
                 <div class="form-box">
@@ -36,7 +34,7 @@
 
                         <div class="form-group row justify-content-center">
                             <div class="col-sm-6 mb-2 pt-2 pr-1">
-                                {% render_field form.subscriber_email id="textbox-email" class="form-control form-control-sm"  aria-describedby="emailHelp" %}
+                                {% render_field form.subscriber_email %}
                                 <small id="emailHelp" class="form-text text-left force-text-white">we'll never share your email with anyone else.</small>
                             
                                 {% if form.is_bound %}
@@ -59,10 +57,11 @@
 
 
                 <br><br>
-                <!-- <a class="an white label" href="https://www.facebook.com/Pinnevent-419506955147609/" target="_blank">or like us on facebook.</a> -->
+                
+                <!-- Socials -->
                 <a class="an f-blue special-position label right pr-1" href="https://www.facebook.com/Pinnevent-419506955147609/"  target="_blank"><i class="fab fa-facebook-square fa-lg" style="color:#fff"></i></a>
-                <a class="an f-blue special-position label right pr-1" href="https://www.facebook.com/Pinnevent-419506955147609/"  target="_blank"><i class="fab fa-twitter-square fa-lg" style="color:#fff"></i></a>
-                <a class="an f-blue special-position label right pr-1" href="https://www.facebook.com/Pinnevent-419506955147609/"  target="_blank"><i class="fab fa-instagram fa-lg" style="color:#fff"></i></a>
+                <a class="an f-blue special-position label right pr-1" href="https://twitter.com/pinnevent"  target="_blank"><i class="fab fa-twitter-square fa-lg" style="color:#fff"></i></a>
+                <a class="an f-blue special-position label right pr-1" href="https://www.instagram.com/pinnevent/"  target="_blank"><i class="fab fa-instagram fa-lg" style="color:#fff"></i></a>
                 <!-- <a class="an f-blue special-position label right pr-1" href="https://www.facebook.com/Pinnevent-419506955147609/"  target="_blank"><i class="fab fa-discord fa-lg" style="color:#fff"></i></a> -->
             </div>
         </div>

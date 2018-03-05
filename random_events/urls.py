@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler404, handler500
 
 from application_events import views as aev
 from paperless_mails import views as pmv
 from event_feed import views as efv
+
+
 
 urlpatterns = [
     path('', efv.Index, name="index"),
@@ -27,3 +30,8 @@ urlpatterns = [
     path('termsofservices/', aev.TermsOfServicesView, name="termsofservices"),
     path('thankyou/',include('application_events.urls')),
 ]
+
+
+
+handler404 = aev.error_404
+handler500 = aev.error_500

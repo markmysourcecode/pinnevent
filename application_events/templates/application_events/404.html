@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block title %}Terms of Services{% endblock%}
+
+{% block content %}
+{% load widget_tweaks %}
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center">
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6 text-center my-auto">
+                
+                <h3 class="pinnevent-brand text-muted">Pinnevent</h3>
+                <h1 class="display-1 display-large-text roboto-text">500</h1>
+                <p class="text-muted mb-0">Looks like we're back on some Era. We couldn't find the page you're looking for.</p>
+                <p class="text-muted">Don't worry it's not you it's us.</p>
+
+
+                <a class="force-main-color" href="{% url 'index' %}"><small>take me Home</small></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

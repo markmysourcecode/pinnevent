@@ -4,17 +4,8 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.password_validation import password_validators_help_texts, validate_password
 
 from accounts.models import User
+from application_events import application_functions as aef
 
-
-
-
-def UniqueEmailSignupValidator(value):
-    ErrMsg = {
-        'email_signup': 'something is wrong, the email address you\'ve just provided are already a registered account.',
-    }    
-
-    if User.objects.filter(email__iexact=value).exists():
-        raise ValidationError(ErrMsg['email_signup'])
 
 
 
@@ -25,6 +16,7 @@ class SignInForm(forms.Form):
             required=True,
             error_messages={
                 'required': 'let\'s have your email address and we\'ll verify how awesome you are.',
+                'invalid': 'We appreciate it, but we need you to provide a valid email address.',
                 },
             widget=forms.EmailInput(
                 attrs={
@@ -63,6 +55,8 @@ class SignInForm(forms.Form):
 
 
 
+
+
 class SignUpForm(forms.ModelForm):
 
     # fields
@@ -70,6 +64,7 @@ class SignUpForm(forms.ModelForm):
             required=True,
             error_messages={
                 'required': 'let\'s have your email address and we\'ll take care on everything.',
+                'invalid': 'We appreciate it, but we need you to provide a valid email address.',
                 },
             widget=forms.EmailInput(
                 attrs={
@@ -122,8 +117,8 @@ class SignUpForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
-        self.fields['email'].validators.append(UniqueEmailSignupValidator)
-        #self.fields['password'].validators.append(get_default_password_validators)
+        self.fields['email'].validators.append(aef.UniqueEmailSignupValidator)
+        self.fields['email'].validators.append(aef.EmailAddressValidator)
 
 
     def clean(self):

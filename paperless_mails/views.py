@@ -8,7 +8,7 @@ import logging
 
 
 
-def Index_With_Email_Subscription(request):
+def Email_Subscription(request):
 
     # generate random background
     bg_load_image = af.RandomBackground()
@@ -19,28 +19,27 @@ def Index_With_Email_Subscription(request):
 
 
         form = EmailSubscriberForm(request.POST)
-        print(form.is_valid())
         if not form.is_valid():
             return render(request, 'index.html', { 'form': form, 'bg_load_image': bg_load_image, })
 
         else:
             # add subscriber
-            '''email = form.cleaned_data.get('subscriber_email')
-            #EmailSubscriber.objects.create(email=email)
+            email = form.cleaned_data.get('subscriber_email')
+            EmailSubscriber.objects.create(email=email)
 
             # test
             logger.info(email)
-            #if email != "markusemailbox@gmail.com":
-                #EmailSubscriber.objects.create(email=email)
+            if email != "markusemailbox@gmail.com":
+                EmailSubscriber.objects.create(email=email)
 
 
             # return message base from success of sending email
             x = af.Send_Email_Subscription_With_SendGrid(email)
-            logger.info(x)'''
-            #if x == '202':
-                #return redirect('application_events:thanksfor', thanks_for = 'subscribed_failed')
-            #else:
-            return redirect('application_events:thanksfor', thanks_for = 'subscribed_failed')
+            logger.info(x)
+            if x == '202':
+                return redirect('application_events:thanksfor', thanks_for = 'subscribed_failed')
+            else:
+                return redirect('application_events:thanksfor', thanks_for = 'subscribed_failed')
 
 
     else:
