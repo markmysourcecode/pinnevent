@@ -62,16 +62,15 @@ def Send_Email_Subscription_With_SendGrid(to_email):
     if SENDGRID_API_KEY_Z is None:
         SENDGRID_API_KEY_Z = GetSendGridAPIKeyInLocalSettings()
 
-    '''sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY_Z)
+    sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY_Z)
     from_email = Email("pinneventofficial@gmail.com")
     subject = "Greetings from Pinnevent"
     to_email = Email(to_email)
     content = Content("text/plain", "Hello, Pinner! Thanks for having interest with what we\'re working. We'll connect to you soon.")
     mail = Mail(from_email, subject, to_email, content)
-    response = sg.client.mail.send.post(request_body=mail.get())'''
+    response = sg.client.mail.send.post(request_body=mail.get())
 
-    #return response.status_code
-    return 202
+    return response.status_code
 
 
 
