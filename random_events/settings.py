@@ -29,11 +29,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 APPLICATION_EVENTS_DIR = os.path.join(BASE_DIR, 'application_events')
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j0=a32*mdo4ha538=_6o+l5m%xtgcdffyn)m3a2my&@9e3cd+p'
+SECRET_KEY = os.environ.get('SECRET_KEY_K')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -196,102 +192,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
-
-#LOGIN_REDIRECT_URL = '/djsite'
-
-#SOCIAL_AUTH_FACEBOOK_KEY = '147805165936776'
-#SOCIAL_AUTH_FACEBOOK_SECRET = 'fa83c090e0e0cd6250c362fc493bdfe1'
-
-
-
 # Activate Django-Heroku.
 django_heroku.settings(locals())
-
-
-
-'''# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
-
-
-LOGGING_CONFIG = None
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse',
-        },
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        },
-    },
-    'handlers': {
-        'console': {
-            'level': 'INFO',
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-        },
-        'null': {
-            'class': 'logging.NullHandler',
-        },
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-    'loggers': {
-        '': {
-            'handlers': ['console'],
-        },
-        'django': {
-            'handlers': ['console'],
-        },
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-        'django.security': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-        'py.warnings': {
-            'handlers': ['console'],
-        },
-    }
-}
-import logging.config
-logging.config.dictConfig(LOGGING)'''
-
-
 
 
 # local_settings()
@@ -299,14 +201,5 @@ try:
     from local_settings import *
 except ImportError:
     pass
-    '''try:
-        from mod_python import apache
-        apache.log_error('local_settings.py not set; using default settings', apache.APLOG_NOTICE)
-    except ImportError:
-        import sys
-        sys.stderr.write('local_settings.py not set; using default settings\n')'''
 
-
-
-#print(DEBUG)
 #DISABLE_COLLECTSTATIC = 1

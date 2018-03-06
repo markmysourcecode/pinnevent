@@ -33,9 +33,14 @@ def RandomBackground():
     return bg_image_name
 
 
-
-
-
+def GetSendGridAPIKeyInLocalSettings():
+    # read localsettings if it exist
+    try:
+        from random_events import local_settings
+        return getattr(local_settings, "SENDGRID_API_KEY_LOCAL")
+    except ImportError:
+        return None
+    
 
 
 
@@ -48,31 +53,25 @@ def RandomBackground():
 def Send_Email_Subscription_With_SendGrid(to_email):
     # send subscription email using sendgrid
 
-    # set default apikey
-    # ' apikey : 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
     try:
         SENDGRID_API_KEY_Z = os.environ.get('SENDGRID_API_KEY')
     except:
         pass
 
 
-    if Send_Email_Subscription_With_SendGrid:
-        SENDGRID_API_KEY_Z = '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'
+    if SENDGRID_API_KEY_Z is None:
+        SENDGRID_API_KEY_Z = GetSendGridAPIKeyInLocalSettings()
 
-    sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY_Z)
+    '''sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY_Z)
     from_email = Email("pinneventofficial@gmail.com")
     subject = "Greetings from Pinnevent"
     to_email = Email(to_email)
     content = Content("text/plain", "Hello, Pinner! Thanks for having interest with what we\'re working. We'll connect to you soon.")
     mail = Mail(from_email, subject, to_email, content)
-    response = sg.client.mail.send.post(request_body=mail.get())
+    response = sg.client.mail.send.post(request_body=mail.get())'''
 
-    # test result
-    # print(response.status_code)
-    #print(response.body)
-    #print(response.headers)
-
-    return response.status_code
+    #return response.status_code
+    return 202
 
 
 

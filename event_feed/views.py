@@ -20,7 +20,6 @@ def Index(request):
 
         if request.method == 'POST':
             form = EmailSubscriberForm(request.POST)
-            print(form.is_valid())
 
             if not form.is_valid():           
                 return render(request, 'index.html', { 'form': form, 'bg_load_image': bg_load_image, })
