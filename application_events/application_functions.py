@@ -33,11 +33,11 @@ def RandomBackground():
     return bg_image_name
 
 
-def GetSendGridAPIKeyInLocalSettings():
+def GetSendGridAPIKeyInLocalSettings(local_variable):
     # read localsettings if it exist
     try:
         from random_events import local_settings
-        return getattr(local_settings, "SENDGRID_API_KEY_LOCAL")
+        return getattr(local_settings, local_variable)
     except ImportError:
         return None
     
@@ -55,15 +55,17 @@ def Send_Email_Subscription_With_SendGrid(to_email):
 
     try:
         SENDGRID_API_KEY_Z = os.environ.get('SENDGRID_API_KEY')
+        OFFICIAL_FROM_EMAIL_E = os.environ.get('PINNEVENT_GODADDY_EMAIL')
     except:
         pass
 
 
     if SENDGRID_API_KEY_Z is None:
-        SENDGRID_API_KEY_Z = GetSendGridAPIKeyInLocalSettings()
+        SENDGRID_API_KEY_Z = GetSendGridAPIKeyInLocalSettings("SENDGRID_API_KEY_LOCAL")
+        OFFICIAL_FROM_EMAIL_E = GetSendGridAPIKeyInLocalSettings("PINNEVENT_GODADDY_EMAIL_LOCAL")
 
     sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY_Z)
-    from_email = Email("pinneventofficial@gmail.com")
+    from_email = Email(OFFICIAL_FROM_EMAIL_E)
     subject = "Greetings from Pinnevent"
     to_email = Email(to_email)
     content = Content("text/plain", "Hello, Pinner! Thanks for having interest with what we\'re working. We'll connect to you soon.")
